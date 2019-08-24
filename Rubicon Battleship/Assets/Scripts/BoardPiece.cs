@@ -9,16 +9,7 @@ public class BoardPiece : MonoBehaviour
 
 
     public Board Board;
-
-    public Vector2 PlaceAt(int row, int column){
-        Row = row;
-        Column = column;
-        var x = (Board.Width / Board.Columns) * column;
-        var z = (Board.Height / Board.Rows) * row;
-
-        return transform.position = new Vector3(x, 0, z);
-    }
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +18,10 @@ public class BoardPiece : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var x = (Board.Width / Board.Columns) * Column;
+        var z = (Board.Height / Board.Rows) * Row;
+
+        transform.position = new Vector3(x, 0, z);
+
     }
 }
