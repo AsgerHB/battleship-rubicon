@@ -11,20 +11,21 @@ public class Move {
     public int Count;
 }
 
+[RequireComponent(typeof(PawnState))]
 public class MoveQueque : MonoBehaviour
 {
     public List<Move> Queque = new List<Move>();
-    public PawnState State;
+    PawnState PawnState;
 
     public void AddMove(Direction direction){
         Debug.Log(Queque.Count());
-        if (MoveCountSum() == State.GetMaxMoves())
+        if (MoveCountSum() == PawnState.GetMaxMoves())
         {
             Debug.Log("Move count exceeded");
             return;
         }
 
-        State = transform.GetComponent<PawnState>();
+        PawnState = transform.GetComponent<PawnState>();
 
         if(Queque.Count() != 0 && Queque.Last().Direction == direction){
             Queque.Last().Count++;
@@ -79,7 +80,7 @@ public class MoveQueque : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PawnState = gameObject.GetComponent<PawnState>();
     }
 
     // Update is called once per frame
