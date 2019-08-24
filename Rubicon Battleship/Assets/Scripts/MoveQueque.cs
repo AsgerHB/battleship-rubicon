@@ -15,10 +15,11 @@ public class Move {
 public class MoveQueque : MonoBehaviour
 {
     public List<Move> Queque = new List<Move>();
+    public TextMesh TextTarget;
+
     PawnState PawnState;
 
     public void AddMove(Direction direction){
-        Debug.Log(Queque.Count());
         if (MoveCountSum() == PawnState.GetMaxMoves())
         {
             Debug.Log("Move count exceeded");
@@ -34,6 +35,9 @@ public class MoveQueque : MonoBehaviour
         {
             Queque.Add(new Move { Count = 1, Direction = direction});
         }
+
+        if (TextTarget != null)
+            TextTarget.text = ToString();
 
     }
 
@@ -52,6 +56,9 @@ public class MoveQueque : MonoBehaviour
     public void Clear()
     {
         Queque.Clear();
+
+        if (TextTarget != null)
+            TextTarget.text = ToString();
     }
 
     [ContextMenu("Up")]
@@ -87,5 +94,28 @@ public class MoveQueque : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public override string ToString()
+    {
+        var result = "";
+ 
+        foreach(var move in Queque)
+        {
+            result = result + move.Count.ToString();
+
+            if (move.Direction == Direction.Up)
+                result = result + "↑";
+            if (move.Direction == Direction.Down)
+                result = result + "↓";
+            if (move.Direction == Direction.Left)
+                result = result + "←";
+            if (move.Direction == Direction.Right)
+                result = result + "→";
+
+            if (Queque.Last() != move)
+                result = result + "│  ";
+        }
+        return result; 
     }
 }
