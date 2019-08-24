@@ -8,11 +8,12 @@ public class BoardPiece : MonoBehaviour
     public int Column;
 
 
-    public Board Board;
+    Board Board;
     
     // Start is called before the first frame update
     void Start()
     {
+        Board = Component.FindObjectOfType<Board>();
     }
 
     // Update is called once per frame
