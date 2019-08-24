@@ -47,6 +47,12 @@ public class MoveQueque : MonoBehaviour
         return count;
     }
 
+    [ContextMenu("Clear")]
+    public void Clear()
+    {
+        Queque.Clear();
+    }
+
     [ContextMenu("Up")]
     public void Up(){
         AddMove(Direction.Up);
