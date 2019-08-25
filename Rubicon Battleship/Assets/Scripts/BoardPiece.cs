@@ -25,4 +25,14 @@ public class BoardPiece : MonoBehaviour
         transform.position = new Vector3(x, 0, z);
 
     }
+
+    [ContextMenu("Update")]
+    public void EditorUpdate(){
+        Board = Component.FindObjectOfType<Board>();
+        var x = (Board.Width / Board.Columns) * Column;
+        var z = (Board.Height / Board.Rows) * Row;
+
+        transform.position = new Vector3(x, 0, z);
+
+    }
 }
