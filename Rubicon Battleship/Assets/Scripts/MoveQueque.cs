@@ -88,6 +88,8 @@ public class MoveQueque : MonoBehaviour
     void Start()
     {
         PawnState = gameObject.GetComponent<PawnState>();
+        if (TextTarget != null)
+            TextTarget.text = ToString();
     }
 
     // Update is called once per frame
@@ -99,6 +101,11 @@ public class MoveQueque : MonoBehaviour
     public override string ToString()
     {
         var result = "";
+
+        if (PawnState.veteran)
+            result = result + "♦ ";
+        else
+            result = result + "● ";
  
         foreach(var move in Queque)
         {
