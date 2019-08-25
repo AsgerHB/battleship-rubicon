@@ -61,26 +61,26 @@ public class MoveQueque : MonoBehaviour
             TextTarget.text = ToString();
     }
 
-    [ContextMenu("Up")]
-    public void Up(){
+    [ContextMenu("North")]
+    public void North(){
         AddMove(Direction.Up);
     }
 
     
-    [ContextMenu("Down")]
-    public void Down(){
+    [ContextMenu("South")]
+    public void South(){
         AddMove(Direction.Down);
     }
 
     
-    [ContextMenu("Left")]
-    public void Left(){
+    [ContextMenu("West")]
+    public void West(){
         AddMove(Direction.Left);
     }
     
     
-    [ContextMenu("Right")]
-    public void Right(){
+    [ContextMenu("East")]
+    public void East(){
         AddMove(Direction.Right);
     }
 
