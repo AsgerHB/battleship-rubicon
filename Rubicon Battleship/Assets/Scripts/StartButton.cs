@@ -29,7 +29,7 @@ public class StartButton : MonoBehaviour
 
         var foo = moveQueques.Select(q => new { MoveQueque = q, PawnState = q.GetComponent<PawnState>() });
 
-        return foo.Any(x => x.MoveQueque.MoveCountSum() == x.PawnState.GetMaxMoves() || (x.PawnState.veteran && x.MoveQueque.MoveCountSum() == x.PawnState.GetMaxMoves() - 1));
+        return foo.All(x => x.MoveQueque.MoveCountSum() == x.PawnState.GetMaxMoves() || (x.PawnState.veteran && x.MoveQueque.MoveCountSum() == x.PawnState.GetMaxMoves() - 1));
     }
 
     [ContextMenu("Start")]
