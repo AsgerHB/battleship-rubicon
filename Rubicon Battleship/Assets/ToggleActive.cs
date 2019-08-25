@@ -7,7 +7,9 @@ public class ToggleActive : MonoBehaviour
 {
     public void foo()
     {
-        Debug.Log("start");
+        if (!IsControllingPlayer())
+            return;
+
         if (Active == true)
         {
             Active = false;
@@ -16,8 +18,6 @@ public class ToggleActive : MonoBehaviour
         {
             Active = true;
         }
-        
-        
     }
 
     public GameObject ArrowN;
@@ -33,5 +33,12 @@ public class ToggleActive : MonoBehaviour
         ArrowS.SetActive(Active);
         ArrowE.SetActive(Active);
         ArrowW.SetActive(Active);
+    }
+
+    bool IsControllingPlayer()
+    {
+        var pawnstate = gameObject.GetComponent<PawnState>();
+        var playerSwitcher = Component.FindObjectOfType<PlayerSwitcher>();
+        return pawnstate.controllingPlayer == playerSwitcher.CurrentPlayer;
     }
 }

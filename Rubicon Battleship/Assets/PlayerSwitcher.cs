@@ -8,7 +8,7 @@ public class PlayerSwitcher : MonoBehaviour
     public GameObject Player1;
     public GameObject Player2;
 
-    int CurrentPlayer = 1;
+    public int CurrentPlayer = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +27,12 @@ public class PlayerSwitcher : MonoBehaviour
 
     [ContextMenu("Switch")]
     public void Switch(){
+        var pawns = Component.FindObjectsOfType<ToggleActive>();
+        foreach (var pawn in pawns)
+        {
+            pawn.Active = false;
+        }
+
         if(CurrentPlayer == 1){
             CurrentPlayer = 2;
             Camera.transform.position = Player2.transform.position;

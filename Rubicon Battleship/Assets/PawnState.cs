@@ -7,6 +7,7 @@ public class PawnState : MonoBehaviour
 
     public int health;
     public bool veteran;
+    public int controllingPlayer;
     
     public int GetMaxMoves()
     {
